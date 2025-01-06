@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+.bg-noise {
+  background-image: url('path/to/noise-texture.png'); /* Add your noise texture image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-shiny-grains {
+  background-image: url('path/to/shiny-grains-texture.png'); /* Add your shiny grains texture image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
