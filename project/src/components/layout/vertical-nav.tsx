@@ -7,10 +7,11 @@ import { Button } from '@/components/ui/button';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const navItems = [
-  { icon: HomeIcon, label: 'Home', href: '#home', color: '#3b82f6' },
-  { icon: FolderIcon, label: 'Resources', href: '#resources', color: '#8b5cf6' },
-  { icon: UsersIcon, label: 'Community', href: '#community', color: '#ec4899' },
+  { icon: HomeIcon, label: 'Home', href: '#hero', color: '#3b82f6' },
+  { icon: FolderIcon, label: 'Categories', href: '#categories', color: '#8b5cf6' },
+  { icon: UsersIcon, label: 'Resources', href: '#premium-resources', color: '#ec4899' },
   { icon: GlobeIcon, label: 'My Website', href: '#my-website', color: '#10b981' },
+  { icon: UsersIcon, label: 'Community', href: '/community', color: '#f59e0b' },
 ];
 
 interface VerticalNavProps {
@@ -25,7 +26,11 @@ export function VerticalNav({ isCollapsed, onCollapsedChange }: VerticalNavProps
   const navigate = useNavigate();
 
   const handleNavClick = (href: string) => {
-    if (location.pathname !== '/') {
+    if (href.startsWith('/')) {
+      // For regular routes like '/community'
+      navigate(href);
+    } else if (location.pathname !== '/') {
+      // For hash routes when not on home page
       navigate('/');
       setTimeout(() => {
         const element = document.querySelector(href);
@@ -34,6 +39,7 @@ export function VerticalNav({ isCollapsed, onCollapsedChange }: VerticalNavProps
         }
       }, 100);
     } else {
+      // For hash routes when on home page
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });

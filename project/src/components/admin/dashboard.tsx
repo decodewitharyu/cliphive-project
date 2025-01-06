@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { PlusIcon, SaveIcon, LogOutIcon, TrashIcon, BellIcon } from 'lucide-react';
+import { PlusIcon, LogOutIcon, TrashIcon, BellIcon } from 'lucide-react';
 
 interface Announcement {
   id: string;

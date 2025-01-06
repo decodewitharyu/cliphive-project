@@ -1,16 +1,18 @@
 import { motion } from 'framer-motion';
-import { DownloadIcon } from 'lucide-react';
+import { DownloadIcon, SparklesIcon } from 'lucide-react';
 
 interface DownloadButtonProps {
   href: string;
   gradient?: string;
   className?: string;
+  isPremium?: boolean;
 }
 
 export function DownloadButton({
   href,
   gradient = 'from-blue-500 to-purple-500',
   className = '',
+  isPremium = false,
 }: DownloadButtonProps) {
   return (
     <motion.a
@@ -22,6 +24,18 @@ export function DownloadButton({
       whileTap={{ scale: 0.95 }}
     >
       <span className="relative inline-flex h-10 items-center gap-2 rounded-lg bg-background px-4 py-2 text-sm font-medium transition-colors duration-300 group-hover:bg-transparent group-hover:text-white">
+        {isPremium && (
+          <motion.div
+            className="absolute -right-1 -top-1 rounded-full bg-gradient-to-r from-yellow-500 to-amber-500 p-[1px]"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <div className="flex items-center gap-1 rounded-full bg-background px-2 py-0.5 text-xs font-bold text-yellow-500">
+              <SparklesIcon className="h-3 w-3" />
+              VIP
+            </div>
+          </motion.div>
+        )}
         <span>Download Now</span>
         <motion.span
           initial={{ x: 0 }}

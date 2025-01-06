@@ -144,55 +144,25 @@ export function MyWebsite() {
             </motion.div>
           </div>
 
-          {/* Video Container with Enhanced Effects */}
+          {/* Video Preview */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative aspect-video"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative aspect-video rounded-xl overflow-hidden shadow-2xl"
           >
-            {/* Floating Elements */}
-            <div className="absolute -left-8 -top-8 h-32 w-32 animate-float">
-              <div className="absolute h-full w-full rounded-full bg-blue-500/20 blur-xl" />
-              <div className="absolute h-16 w-16 translate-x-8 translate-y-8 rounded-full bg-blue-500/20 blur-lg" />
-            </div>
-            <div className="absolute -bottom-8 -right-8 h-32 w-32 animate-float-delay">
-              <div className="absolute h-full w-full rounded-full bg-pink-500/20 blur-xl" />
-              <div className="absolute h-16 w-16 translate-x-8 translate-y-8 rounded-full bg-pink-500/20 blur-lg" />
-            </div>
-
-            {/* Video Frame */}
-            <div className="relative z-10 overflow-hidden rounded-2xl">
-              {/* Animated Border */}
-              <div className="absolute inset-0 animate-border-flow rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-[2px]">
-                <div className="h-full w-full rounded-2xl bg-background" />
-              </div>
-
-              {/* Video */}
-              <div className="relative z-10 aspect-video overflow-hidden rounded-2xl">
-                <div className="relative z-10 h-full w-full">
-                  <iframe
-                    src="https://decodewitharyu.vercel.app"
-                    title="Aryan's Portfolio"
-                    className="absolute inset-0 h-full w-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  />
-                </div>
-
-                {/* Overlay for better visibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
-              </div>
-
-              {/* Corner Accents */}
-              <div className="absolute left-0 top-0 h-16 w-16 animate-pulse-slow">
-                <div className="absolute h-full w-[2px] bg-gradient-to-b from-blue-500 to-transparent" />
-                <div className="absolute h-[2px] w-full bg-gradient-to-r from-blue-500 to-transparent" />
-              </div>
-              <div className="absolute bottom-0 right-0 h-16 w-16 animate-pulse-slow">
-                <div className="absolute bottom-0 right-0 h-full w-[2px] bg-gradient-to-t from-pink-500 to-transparent" />
-                <div className="absolute bottom-0 right-0 h-[2px] w-full bg-gradient-to-l from-pink-500 to-transparent" />
-              </div>
-            </div>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ pointerEvents: 'none' }}
+            >
+              <source src="/webpromo.mp4" type="video/mp4" />
+            </video>
+            {/* Overlay to prevent interaction */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
           </motion.div>
         </div>
       </div>

@@ -24,6 +24,8 @@ import { AdminDashboard } from '@/components/admin/dashboard';
 import { AuthGuard } from '@/components/admin/auth-guard';
 import { ThemeProvider } from '@/components/theme-provider';
 import { HelmetProvider } from 'react-helmet-async';
+import { GlowingCursor } from '@/components/ui/cursor';
+import { Community } from '@/components/community';
 
 export default function App() {
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
@@ -32,7 +34,7 @@ export default function App() {
 
   useEffect(() => {
     const path = window.location.pathname;
-    setShowNavbar(!path.includes('/categories/'));
+    setShowNavbar(!path.includes('/categories/') && !path.includes('/admin'));
 
     // Handle hash navigation when returning to home page
     if (path === '/' && window.location.hash) {
@@ -69,10 +71,18 @@ export default function App() {
                         path="/"
                         element={
                           <>
-                            <Hero />
-                            <Categories />
-                            <PremiumResources />
-                            <MyWebsite />
+                            <div id="hero">
+                              <Hero />
+                            </div>
+                            <div id="categories">
+                              <Categories />
+                            </div>
+                            <div id="premium-resources">
+                              <PremiumResources />
+                            </div>
+                            <div id="my-website">
+                              <MyWebsite />
+                            </div>
                             <Footer />
                           </>
                         }
@@ -83,6 +93,7 @@ export default function App() {
                       <Route path="/categories/color-grading" element={<ColorGradingPage />} />
                       <Route path="/categories/typography" element={<TypographyPage />} />
                       <Route path="/categories/motion-graphics" element={<MotionGraphicsPage />} />
+                      <Route path="/community" element={<Community />} />
                       <Route path="/admin/login" element={<AdminLogin />} />
                       <Route path="/admin/dashboard" element={
                         <AuthGuard>
@@ -95,6 +106,7 @@ export default function App() {
                 </AnimatePresence>
               </Suspense>
             </main>
+            <GlowingCursor />
           </div>
         </ErrorBoundary>
       </ThemeProvider>

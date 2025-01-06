@@ -1,10 +1,17 @@
 import { motion } from 'framer-motion';
-import { GradientButton } from './ui/gradient-button';
+import { Button } from '@/components/ui/button';
 import { NoiseTexture } from './ui/noise-texture';
 
 export function Hero() {
+  const scrollToCategories = () => {
+    const section = document.getElementById('premium-resources');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <div className="relative min-h-[60vh] overflow-hidden">
+    <div id="hero" className="relative min-h-[60vh] overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background to-background/50" />
 
@@ -115,9 +122,14 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <GradientButton href="#categories" className="mx-auto">
+            <Button
+              size="lg"
+              className="text-lg px-8"
+              onClick={scrollToCategories}
+              data-cursor="Explore"
+            >
               Explore Resources
-            </GradientButton>
+            </Button>
           </motion.div>
         </div>
       </div>

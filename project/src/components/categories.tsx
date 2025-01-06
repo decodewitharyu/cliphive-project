@@ -69,7 +69,7 @@ export function Categories() {
   };
 
   return (
-    <section className="responsive-section py-12">
+    <section id="categories" className="responsive-section py-12">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

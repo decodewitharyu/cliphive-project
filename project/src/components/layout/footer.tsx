@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { GithubIcon, TwitterIcon, LinkedinIcon, InstagramIcon, HeartIcon } from 'lucide-react';
-import { Logo } from '@/components/logo';
 
 const socialLinks = [
   {
@@ -73,7 +72,30 @@ export function Footer() {
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Logo and Description */}
           <div className="space-y-4">
-            <Logo />
+            <motion.div
+              className="relative cursor-pointer overflow-hidden"
+              whileHover="hover"
+            >
+              <motion.div
+                variants={{
+                  hover: { x: -100, opacity: 0 }
+                }}
+                transition={{ duration: 0.3 }}
+                className="text-xl font-bold"
+              >
+                CH
+              </motion.div>
+              <motion.div
+                variants={{
+                  initial: { x: 100, opacity: 0 },
+                  hover: { x: 0, opacity: 1 }
+                }}
+                initial="initial"
+                className="absolute left-0 top-0 text-xl font-bold text-primary"
+              >
+                Decode AI
+              </motion.div>
+            </motion.div>
             <p className="max-w-md text-sm text-muted-foreground">
               Your one-stop destination for high-quality creative resources. Elevate your projects with our curated collection of tools and assets.
             </p>
@@ -126,7 +148,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="mt-16 flex flex-col items-center justify-between gap-4 pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Your Name. All rights reserved.
+            &copy; {new Date().getFullYear()} Your Name. All rights reserved.
           </p>
           <motion.p
             className="flex items-center gap-2 text-sm text-muted-foreground"

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { PlusIcon, SaveIcon } from 'lucide-react';
+import { PlusIcon } from 'lucide-react';
 
 interface ResourceForm {
   title: string;

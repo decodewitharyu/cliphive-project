@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { DownloadButton } from './download-button';
+import { SparklesIcon } from 'lucide-react';
+import { Button } from './button';
 
 interface ResourceCardProps {
   title: string;
@@ -48,7 +49,24 @@ export function ResourceCard({
         </div>
         <p className="text-sm text-muted-foreground">{description}</p>
         
-        <DownloadButton href={downloadUrl} gradient={gradient} className="w-full" />
+        <Button
+          className="group relative w-full overflow-hidden rounded-lg border border-yellow-500/20"
+          onClick={() => window.open(downloadUrl, '_blank')}
+        >
+          {/* Golden gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 via-amber-500/20 to-yellow-500/20" />
+          
+          {/* Animated shine effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+          
+          {/* Button content */}
+          <div className="relative flex items-center justify-center gap-2 px-4 py-2 font-semibold text-yellow-500">
+            <SparklesIcon className="h-4 w-4" />
+            <span className="bg-gradient-to-r from-yellow-500 to-amber-500 bg-clip-text text-transparent">
+              Download VIP
+            </span>
+          </div>
+        </Button>
       </div>
 
       {/* Hover Effects */}
